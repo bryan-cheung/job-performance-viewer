@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pricing Job Performance</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar" aria-label="Dashboard header">
+        <div>
+          <p class="eyebrow">Pricing operations</p>
+          <h1>Job performance analysis</h1>
+        </div>
+        <div class="topbar-actions">
+          <label class="search">
+            <span>Search</span>
+            <input id="job-search" type="search" placeholder="job id, book, status" />
+          </label>
+          <select id="status-filter" aria-label="Filter by status">
+            <option value="all">All statuses</option>
+            <option value="completed">Completed</option>
+            <option value="warning">Warning</option>
+            <option value="failed">Failed</option>
+          </select>
+        </div>
+      </header>
+
+      <section class="summary-strip" aria-label="Fleet summary">
+        <article>
+          <span>Total jobs</span>
+          <strong id="metric-jobs">0</strong>
+        </article>
+        <article>
+          <span>Average runtime</span>
+          <strong id="metric-average">0ms</strong>
+        </article>
+        <article>
+          <span>P95 runtime</span>
+          <strong id="metric-p95">0ms</strong>
+        </article>
+        <article>
+          <span>Slowest stage</span>
+          <strong id="metric-bottleneck">-</strong>
+        </article>
+      </section>
+
+      <section class="workspace">
+        <aside class="job-list-panel" aria-label="Jobs">
+          <div class="panel-heading">
+            <h2>Jobs</h2>
+            <span id="job-count">0 shown</span>
+          </div>
+          <div id="job-list" class="job-list"></div>
+        </aside>
+
+        <section class="analysis-panel" aria-label="Selected job analysis">
+          <div class="job-hero">
+            <div>
+              <p id="selected-owner" class="eyebrow">-</p>
+              <h2 id="selected-title">Select a job</h2>
+              <p id="selected-meta">Timing summary will appear here.</p>
+            </div>
+            <div id="selected-score" class="score-ring" aria-label="Health score">0</div>
+          </div>
+
+          <div class="panel-grid">
+            <article class="panel wide">
+              <div class="panel-heading">
+                <h3>Job stage timeline</h3>
+                <span id="timeline-total">0ms total</span>
+              </div>
+              <div id="stage-stack" class="stage-stack" aria-label="Stage duration stack"></div>
+              <div id="stage-bars" class="stage-bars"></div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-heading">
+                <h3>Bottlenecks</h3>
+                <span>Top 3</span>
+              </div>
+              <ol id="bottleneck-list" class="bottleneck-list"></ol>
+            </article>
+
+            <article class="panel">
+              <div class="panel-heading">
+                <h3>Run context</h3>
+                <span id="run-status">-</span>
+              </div>
+              <dl id="run-context" class="context-list"></dl>
+            </article>
+          </div>
+        </section>
+
+        <aside class="request-panel" aria-label="Price request breakdown">
+          <div class="panel-heading">
+            <h2>Price request</h2>
+            <select id="request-picker" aria-label="Select price request"></select>
+          </div>
+          <div id="request-total" class="request-total">0ms</div>
+          <div id="request-breakdown" class="request-breakdown"></div>
+          <table>
+            <thead>
+              <tr>
+                <th>Step</th>
+                <th>Time</th>
+                <th>Share</th>
+              </tr>
+            </thead>
+            <tbody id="request-table"></tbody>
+          </table>
+        </aside>
+      </section>
+    </main>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
