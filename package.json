@@ -1,0 +1,8 @@
+{
+  "name": "job-performance-viewer",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "node app.test.mjs"
+  }
+}
